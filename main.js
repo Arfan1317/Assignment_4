@@ -88,3 +88,37 @@
             }
             updateDashboardCounts();
         }
+
+        function updateDashboardCounts() {
+            countTotal.innerText = jobsData.length;
+            const interviewCount = jobsData.filter(job => job.status === "Interview").length;
+            countInterview.innerText = interviewCount;
+            const rejectedCount = jobsData.filter(job => job.status === "Rejected").length;
+            countRejected.innerText = rejectedCount;
+
+            if (currentTab === "All") {
+                sectionJobCount.innerText = jobsData.length;
+            } else if (currentTab === "Interview") {
+                sectionJobCount.innerText = interviewCount;
+            } else if (currentTab === "Rejected") {
+                sectionJobCount.innerText = rejectedCount;
+            }
+        }
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                tabButtons.forEach(btn => {
+                    btn.classList.remove('bg-blue-500', 'text-white');
+                    btn.classList.add('bg-white', 'text-slate-600');
+                });
+                
+                this.classList.remove('bg-white', 'text-slate-600');
+                this.classList.add('bg-blue-500', 'text-white');
+
+                currentTab = this.getAttribute('data-tab');
+                renderUI();
+            });
+        });
+
+
+        renderUI();
