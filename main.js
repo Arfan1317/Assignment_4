@@ -120,5 +120,28 @@
             });
         });
 
+        jobsContainer.addEventListener('click', function(event) {
+            const targetBtn = event.target.closest('button');
+            if (!targetBtn) return; 
+
+            const jobId = Number(targetBtn.getAttribute('data-id'));
+
+            if (targetBtn.classList.contains('interview-btn')) {
+                const jobIndex = jobsData.findIndex(job => job.id === jobId);
+                jobsData[jobIndex].status = "Interview";
+                renderUI();
+            }
+
+            if (targetBtn.classList.contains('rejected-btn')) {
+                const jobIndex = jobsData.findIndex(job => job.id === jobId);
+                jobsData[jobIndex].status = "Rejected";
+                renderUI();
+            }
+
+            if (targetBtn.classList.contains('delete-btn')) {
+                jobsData = jobsData.filter(job => job.id !== jobId);
+                renderUI();
+            }
+        });
 
         renderUI();
