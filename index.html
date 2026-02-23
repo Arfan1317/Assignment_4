@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Application Tracker</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-slate-50 min-h-screen text-slate-800 font-sans p-4 md:p-10">
 
     <div class="max-w-5xl mx-auto">
-        
+
         <header class="mb-10">
             <h1 class="text-3xl font-bold text-slate-900 mb-6">Job Application Tracker</h1>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
                 <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
                     <h2 class="text-sm font-medium text-slate-500 mb-2">Total</h2>
@@ -36,21 +38,29 @@
             </div>
 
             <div class="flex flex-row justify-between w-full gap-2 mb-6" id="tabs-container">
-                <button class="tab-btn active-tab flex-1 py-2 rounded-md text-xs sm:text-sm font-medium bg-blue-500 text-white transition" data-tab="All">All</button>
-                <button class="tab-btn flex-1 py-2 rounded-md text-xs sm:text-sm font-medium bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition" data-tab="Interview">Interview</button>
-                <button class="tab-btn flex-1 py-2 rounded-md text-xs sm:text-sm font-medium bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition" data-tab="Rejected">Rejected</button>
+                <button
+                    class="tab-btn active-tab flex-1 py-2 rounded-md text-xs sm:text-sm font-medium bg-blue-500 text-white transition"
+                    data-tab="All">All</button>
+                <button
+                    class="tab-btn flex-1 py-2 rounded-md text-xs sm:text-sm font-medium bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 hover:text-black transition"
+                    data-tab="Interview">Interview</button>
+                <button
+                    class="tab-btn flex-1 py-2 rounded-md text-xs sm:text-sm font-medium bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 hover:text-black transition"
+                    data-tab="Rejected">Rejected</button>
             </div>
 
-            <div id="empty-state" class="hidden bg-white rounded-xl shadow-sm border border-slate-100 p-10 md:p-16 flex flex-col items-center justify-center text-center">
+            <div id="empty-state"
+                class="hidden bg-white rounded-xl shadow-sm border border-slate-100 p-10 md:p-16 flex flex-col items-center justify-center text-center">
                 <img src="./jobs.png" alt="No jobs" class="w-20 h-20 md:w-24 md:h-24 mb-4 opacity-80">
                 <h3 class="text-xl font-bold text-slate-800 mb-1">No jobs available</h3>
                 <p class="text-slate-500 text-sm">Check back soon for new job opportunities</p>
             </div>
 
             <div id="jobs-container" class="space-y-4">
-                </div>
+            </div>
         </main>
     </div>
     <script src="main.js"></script>
 </body>
+
 </html>
