@@ -46,7 +46,44 @@
                         badgeClass = "bg-[#EF4444]/10 text-[#EF4444]";
                     }
 
-                   
+                    return `
+                    <div class="bg-white p-5 md:p-6 rounded-xl shadow-sm border border-slate-100 relative group transition hover:shadow-md">
+                        
+                        <button data-id="${job.id}" class="delete-btn absolute top-4 right-4 md:top-6 md:right-6 p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-full transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path></svg>
+                        </button>
+
+                        <div class="pr-10">
+                            <h3 class="text-lg font-bold text-slate-900">${job.company}</h3>
+                            <p class="text-slate-500 text-sm mb-4">${job.position}</p>
+                        </div>
+                        
+                        <div class="flex flex-wrap items-center text-xs text-slate-400 mb-4 gap-2 md:gap-3">
+                            <span>${job.location}</span>
+                            <span class="hidden md:inline">•</span>
+                            <span>${job.type}</span>
+                            <span class="hidden md:inline">•</span>
+                            <span>${job.salary}</span>
+                        </div>
+
+                        <span class="inline-block px-3 py-1 rounded text-xs font-bold mb-4 ${badgeClass}">
+                            ${badgeText}
+                        </span>
+
+                        <p class="text-sm text-slate-600 mb-6 leading-relaxed max-w-3xl">
+                            ${job.description}
+                        </p>
+
+                        <div class="flex flex-row gap-2 md:space-x-3 w-full">
+                            <button data-id="${job.id}" class="interview-btn flex-1 sm:flex-none px-2 sm:px-4 py-2 border ${job.status === 'Interview' ? 'bg-[#10B981]/10 border-[#10B981] text-[#10B981]' : 'border-[#10B981] text-[#10B981] hover:bg-[#10B981]/10'} rounded font-bold text-xs transition">
+                                INTERVIEW
+                            </button>
+                            <button data-id="${job.id}" class="rejected-btn flex-1 sm:flex-none px-2 sm:px-4 py-2 border ${job.status === 'Rejected' ? 'bg-[#EF4444]/10 border-[#EF4444] text-[#EF4444]' : 'border-[#EF4444] text-[#EF4444] hover:bg-[#EF4444]/10'} rounded font-bold text-xs transition">
+                                REJECTED
+                            </button>
+                        </div>
+                    </div>
+                    `;
                 }).join('');
             }
             updateDashboardCounts();
