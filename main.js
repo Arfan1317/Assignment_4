@@ -19,4 +19,35 @@
         const sectionJobCount = document.getElementById('section-job-count');
         const tabButtons = document.querySelectorAll('.tab-btn');
 
-        
+        function renderUI() {
+            let jobsToShow = [];
+            if (currentTab === "All") {
+                jobsToShow = jobsData; 
+            } else if (currentTab === "Interview") {
+                jobsToShow = jobsData.filter(job => job.status === "Interview"); 
+            } else if (currentTab === "Rejected") {
+                jobsToShow = jobsData.filter(job => job.status === "Rejected");
+            }
+
+            if (jobsToShow.length === 0) {
+                emptyState.classList.remove('hidden');
+                jobsContainer.innerHTML = "";
+            } else {
+                emptyState.classList.add('hidden');
+                
+                jobsContainer.innerHTML = jobsToShow.map(job => {
+                    // Update badges to use your custom Hex codes
+                    let badgeClass = "bg-slate-100 text-slate-800";
+                    let badgeText = job.status;
+                    
+                    if (job.status === "Interview") {
+                        badgeClass = "bg-[#10B981]/10 text-[#10B981]";
+                    } else if (job.status === "Rejected") {
+                        badgeClass = "bg-[#EF4444]/10 text-[#EF4444]";
+                    }
+
+                   
+                }).join('');
+            }
+            updateDashboardCounts();
+        }
